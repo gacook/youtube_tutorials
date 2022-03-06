@@ -12,7 +12,7 @@ const aave_lending_address_provider_abi = chain.contracts.avax_lpool.abi
 const aave_lending_address_provider_sc = new web3.eth.Contract(aave_lending_address_provider_abi, aave_lending_address_provider_addr)
 
 const erc20abi = tokens.erc20.abi
-const web3wallet = web3.eth.accounts.wallet.add(wallets.avalanche.primary.private_key)
+const web3wallet = web3.eth.accounts.wallet.add(wallets.avalanche.test_account_1.private_key)
 
 async function main(){
     //await deposit('0xd00ae08403B9bbb9124bB305C09058E32C39A48c', web3.utils.toWei('0.005'), web3wallet.address)
@@ -30,7 +30,6 @@ async function approve(token, addr){
     })
     if(tx.status) console.log('approved')
 }
-
 
 async function deposit(token, amount, onBehalfOf){
     try{

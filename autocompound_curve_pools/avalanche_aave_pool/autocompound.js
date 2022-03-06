@@ -3,9 +3,10 @@ require('dotenv').config()
 
 const { chains } = require('./chains').default
 const { wallets } = require('./wallets').default
+const { tokens } = require('./tokens').default
 
 const chain = chains.avalanche
-const wallet = wallets.avalanche.primary
+const wallet = wallets.avalanche.test_account_1
 const web3 = new Web3(chain.rpc_url)
 
 const aave = require('./aave.js')
@@ -36,7 +37,9 @@ async function autoClaimAndCompound(){
     console.log(`These rewards ${tokenRewards} are claimable`)
     console.log(`Let's see if these rewards are worth claiming`)
     claimed = await attemptRewardClaim(rewardTokens, tokenRewards)
-    compounded = await compoundRewards(rewardTokens, tokenRewards)
+    // compounded = await compoundRewards(rewardTokens, tokenRewards)
+    // wavax = '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7'
+    compounded = await compoundRewards(tokens.avalanche.wavax)
 }
 
 async function getRewardTokens(smartContract){
@@ -103,15 +106,12 @@ async function claimRewards(){
     return false
 }
 
-async function compoundRewards(rewardTokens, tokenRewards){
+async function compoundRewards(tokenAddress){
     try{
-        wavaxToken = '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7'
-        // wavaxRewards = getWavaxRewards(rewardTokens, tokenRewards)
-        wavaxBalance = await getTokenBalance(wavaxToken)
-        // wavaxRewards = web3.utils.toBN(wavaxRewards).add(web3.utils.toBN(wavaxBalance)).toString()
-        if(web3.utils.toBN(wavaxBalance).gte(web3.utils.toBN(web3.utils.toWei('0.1')))){
-            console.log(`Let's compound WAVAX Rewards ${web3.utils.fromWei(wavaxBalance)}`)
-            success = await aave.deposit(wavaxToken, wavaxBalance, onBehalfOf)
+        tokenBalance = await getTokenBalance(tokenAddress)
+        if(web3.utils.toBN(tokenBalance).gte(web3.utils.toBN(web3.utils.toWei('0.1')))){
+            console.log(`Let's compound token Rewards ${web3.utils.fromWei(tokenBalance)}`)
+            success = await aave.deposit(tokenAddress, tokenBalance, onBehalfOf)
             if(success) console.log(`Rewards compounded, yay!!! :)`)
             return success
         }
@@ -146,5 +146,4 @@ async function getTokenBalance(token){
     }
     return balance
 }
-
 main()
