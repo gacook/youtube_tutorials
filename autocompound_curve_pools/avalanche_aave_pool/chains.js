@@ -2763,6 +2763,6 @@ const chains = {
         }
     }
 };
-export default {
+module.exports = {
     chains
 };

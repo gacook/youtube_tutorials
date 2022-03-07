@@ -1,9 +1,9 @@
 const Web3 = require('web3')
 require('dotenv').config()
 
-const { chains } = require('./chains').default
-const { wallets } = require('./wallets').default
-const { tokens } = require('./tokens').default
+const { chains } = require('./chains')
+const { wallets } = require('./wallets')
+const { tokens } = require('./tokens')
 
 const chain = chains.avalanche
 const wallet = wallets.avalanche.test_account_1

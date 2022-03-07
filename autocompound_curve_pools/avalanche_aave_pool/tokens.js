@@ -1478,6 +1478,6 @@ const tokens = {
         ]
     }
 };
-export default {
+module.exports = {
     tokens
 };
