@@ -1,0 +1,17 @@
+const wallets = {
+    "avalanche": {
+        "primary": {
+            "address": "*** replace this text with your public address ***",
+            "private_key": "*** replace this text with your private key ***"
+        }
+    },
+    "polygon": {
+        "primary": {
+            "address": "*** replace this text with your public address ***",
+            "private_key": "*** replace this text with your private key ***"
+        }
+    }
+};
+module.exports = {
+    wallets
+};
