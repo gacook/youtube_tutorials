@@ -733,8 +733,36 @@ const chains = {
                         ],
                         "gas": 3318
                     }
+                ],
+                "actions": [
+                    {
+                        "deposit": {
+                            "threshold": "0.2",
+                            "reward": "wavax",
+                            "target": "avax_lpool",
+                            "actions": []
+                        }
+                    },
+                    {
+                        "swap": {
+                            "threshold": "1.0",
+                            "from": "crv",
+                            "to": "usdt.e",
+                            "contract": "trader_joe",
+                            "actions": [
+                                {
+                                    "deposit": {
+                                        "threshold": "5.0",
+                                        "reward": "usdt.e",
+                                        "contract": "aave",
+                                        "actions": []
+                                    }
+                                }
+                            ]
+                        }
+                    }
                 ]
-            }, 
+            },
             "aave": {
                 "name": "aave",
                 "address": "0x5B5CFE992AdAC0C9D48E05854B2d91C73a003858",
@@ -1465,6 +1493,34 @@ const chains = {
                             }
                         ],
                         "gas": 3318
+                    }
+                ],
+                "actions": [
+                    {
+                        "deposit": {
+                            "threshold": "0.2",
+                            "reward": "wavax",
+                            "target": "avax_lpool",
+                            "actions": []
+                        }
+                    },
+                    {
+                        "swap": {
+                            "threshold": "1.0",
+                            "from": "crv",
+                            "to": "usdt.e",
+                            "contract": "trader_joe",
+                            "actions": [
+                                {
+                                    "deposit": {
+                                        "threshold": "5.0",
+                                        "reward": "usdt.e",
+                                        "contract": "aave",
+                                        "actions": []
+                                    }
+                                }
+                            ]
+                        }
                     }
                 ]
             },
